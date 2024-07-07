@@ -4,8 +4,9 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { Navbar,Footer } from "./components/index";
 import { Outlet } from 'react-router';
+
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>

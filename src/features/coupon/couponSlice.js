@@ -17,3 +17,7 @@ const couponSlice = createSlice({
         }
     }
 })
+
+export const {enterCoupon,removeCoupon} = couponSlice.actions
+
+export default couponSlice.reducer

@@ -1,8 +1,8 @@
 import React from 'react'
-
+import { Login } from "../components/index";
 function LoginPage() {
   return (
-    <div>LoginPage</div>
+    <><Login/></>
   )
 }
 

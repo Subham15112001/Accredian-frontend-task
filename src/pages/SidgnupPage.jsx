@@ -1,8 +1,10 @@
 import React from 'react'
-
+import {Signup} from '../components/index'
 function SidgnupPage() {
   return (
-    <div>SidgnupPage</div>
+    <>
+        <Signup/>
+    </>
   )
 }
 

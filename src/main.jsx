@@ -4,12 +4,14 @@ import App from './App.jsx'
 import   './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { Home,SidgnupPage,LoginPage,LogoutPage } from "./pages/indes.js";
+import store from './store/store.js'
+import { Provider } from 'react-redux'
 
 const router = createBrowserRouter([
   {
     path:"/",
     element:<App/>,
-    Children:[
+    children:[
       {
         path:"/",
         element:<Home/>
@@ -25,14 +27,15 @@ const router = createBrowserRouter([
       {
         path:"/logout",
         element:<LogoutPage/>
-      }
+      },
     ]
   }
 ])
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    
+    <Provider store={store}>
     <RouterProvider router={router}/>
-    
+    </Provider>
   </React.StrictMode>,
 )
