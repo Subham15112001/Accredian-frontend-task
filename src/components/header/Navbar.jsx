@@ -17,7 +17,7 @@ function Navbar() {
         {
             path:"/login",
             Element:"SignIn",
-            active: !authStatus,
+            active:true,
         },
         {
             path:"/signup",
@@ -27,7 +27,7 @@ function Navbar() {
         {
             path:"/logout",
             Element:"Logout",
-            active: authStatus,
+            active: true,
         }
     ]
   return (
@@ -58,6 +58,7 @@ function Navbar() {
               </li>
             ) : null
             )}
+            
       </ul>
     </div>
   </div>

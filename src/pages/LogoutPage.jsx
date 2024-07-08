@@ -1,8 +1,10 @@
 import React from 'react'
-
+import { Logout } from "../components/index";
 function LogoutPage() {
   return (
-    <div>LogoutPage</div>
+    <>
+        <Logout/>
+    </>
   )
 }
 

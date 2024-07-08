@@ -9,7 +9,8 @@ function ShowCard() {
                         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                             <div className="sm:max-w-lg">
                                 <h1 className="font text-6xl font-bold tracking-tight text-gray-900 ">Let's Learn and Earn</h1>
-                                <p className="mt-4 text-2xl text-gray-500">Get a change to win <h2 className='text-blue-600 text-4xl'>Rs 15,000</h2></p>
+                                <p className="mt-4 text-2xl text-gray-500">Get a change to win </p>
+                                <h2 className='text-blue-600 text-4xl'>Rs 15,000</h2>
                             </div>
                             <div>
                                 <div className="mt-10 mr-5 p-5">

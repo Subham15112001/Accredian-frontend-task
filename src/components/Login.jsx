@@ -2,6 +2,8 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { api } from "../api/axios";
+import { login } from "../features/user/userSlice";
 
 function Login() {
 
@@ -12,22 +14,27 @@ function Login() {
         }
     });
     
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const Login = async (data) => {
         try {
-            
-
-            if (login_user) {
-
-               
-
-                getData.then((value)=>{
-                  
-                }).catch((error)=>{
-                    console.log(error)
-                }) 
-                
+          const {email,password} = data;
+          const res = await api.post("users/login",
+            {email,password},
+            {
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true
             }
+          ).then((response)=>{
+            navigate("/");
+            console.log(response)
+            console.log(response?.data?.data)
+            console.log(data)
+            dispatch(login(response?.data?.data))
+          })
+          
+         
         } catch (error) {
             console.log(error)
         }
