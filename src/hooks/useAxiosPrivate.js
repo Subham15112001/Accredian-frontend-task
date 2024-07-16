@@ -8,8 +8,8 @@ const useAxiosPrivate = () => {
     const refresh = useRefreshToken();
     const  auth  = useSelector((state) =>{
        // console.log(state.user)
-        return  state.user.userData});
-    console.log(auth?.accessToken)
+        return  state.user.userData
+    });
     useEffect(() => {
 
         const requestIntercept = axiosPrivate.interceptors.request.use(
@@ -18,7 +18,7 @@ const useAxiosPrivate = () => {
                     config.headers['Authorization'] = `Bearer ${auth?.accessToken}`;
                 }
                 return config;
-            }, (error) => Promise.reject(error)
+            }, async (error) => await Promise.reject(error)
         );
 
         const responseIntercept = axiosPrivate.interceptors.response.use(
@@ -31,7 +31,7 @@ const useAxiosPrivate = () => {
                     prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
                     return axiosPrivate(prevRequest);
                 }
-                return Promise.reject(error);
+                return await Promise.reject(error);
             }
         );
 

@@ -10,7 +10,7 @@ function useRefreshToken() {
 
    const refresh = async () => {
 
-    const response = await api.get("/user/refresh-token")
+    const response = await api.get("/users/refresh-token")
   
     dispatch(upDate({...prev,accessToken : response?.data?.accessToken}))
     console.log(response)

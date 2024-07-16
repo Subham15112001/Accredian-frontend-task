@@ -28,9 +28,6 @@ function Login() {
             }
           ).then((response)=>{
             navigate("/");
-            console.log(response)
-            console.log(response?.data?.data)
-            console.log(data)
             dispatch(login(response?.data?.data))
           })
           
