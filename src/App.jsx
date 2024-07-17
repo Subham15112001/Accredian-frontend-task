@@ -7,13 +7,15 @@ import { Outlet, useLocation, useNavigate } from 'react-router';
 import  useAxiosPrivate  from './hooks/useAxiosPrivate';
 import { useDispatch } from 'react-redux';
 import { login,logout } from "./features/user/userSlice";
-
+import useRefreshToken from "./hooks/useRefreshToken";
+import axios from 'axios';
 
 function App() {
   const [users, setUsers] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const axiosPrivate = useAxiosPrivate();
+  //const refresh = useRefreshToken();
 
   useEffect(() => {
     let isMounted = true;
@@ -21,18 +23,18 @@ function App() {
 
     const getUsers = async () => {
       try {
-        const response = await axiosPrivate.get('/users/refresh-token', {
+        const response = await axiosPrivate.get('users/refresh-token', {
           signal: controller.signal
         }).then((value) => {
-          console.log(value.data);
+          console.log(value)
           isMounted && dispatch(login(value?.data?.data));
         })
-        
+
       } catch (err) {
-        if (err.name !== "CanceledError"){
-          dispatch(logout())
-          console.log(err);
-          navigate('/login');
+        if (!axios.isCancel(err)){
+            dispatch(logout())
+            navigate("/login")
+
         }      
       }
     }

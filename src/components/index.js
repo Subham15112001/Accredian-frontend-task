@@ -5,6 +5,7 @@ import Footer from './footer/Footer.jsx'
 import Navbar from './header/Navbar.jsx'
 import  Signup  from "./Signup.jsx";
 import Logout from './Logout.jsx'
+import ModelForm from './ModelForm.jsx'
 
 export {Login,
         DetailsCard,
@@ -12,5 +13,6 @@ export {Login,
         Footer,
         Navbar,
         Signup,
-        Logout
+        Logout,
+        ModelForm
     }

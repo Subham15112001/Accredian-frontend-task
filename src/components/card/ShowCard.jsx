@@ -1,6 +1,8 @@
 import React from 'react'
 
-function ShowCard() {
+function ShowCard({isVisible,onShow}) {
+
+
   return (
     <>
             <div className=' w-4/5 flex justify-center justify-items-center items-center ml-auto mr-auto  '>
@@ -27,7 +29,7 @@ function ShowCard() {
                                         </div>
                                     </div>
 
-                                    <a href="#" className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700">Svelte Signals</a>
+                                    <a href="#" onClick={() => onShow()} className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700">Svelte Signals</a>
                                 </div>
                             </div>
                         </div>

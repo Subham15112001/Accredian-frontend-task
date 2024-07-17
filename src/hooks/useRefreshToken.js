@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import {api} from '../api/axios'
+import {axiosPrivate,api} from '../api/axios'
 import { useDispatch,useSelector } from "react-redux";
 import { upDate } from "../features/user/userSlice";
 
@@ -10,10 +10,12 @@ function useRefreshToken() {
 
    const refresh = async () => {
 
-    const response = await api.get("/users/refresh-token")
+    const response = await api.get("/users/refresh-token",{
+       withCredentials: true
+    })
   
     dispatch(upDate({...prev,accessToken : response?.data?.accessToken}))
-    console.log(response)
+    //console.log(response)
 
     return response.data.accessToken
    }

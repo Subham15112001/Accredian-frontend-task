@@ -1,10 +1,14 @@
-import React from 'react'
-import { ShowCard } from "../components/index.js";
+import React, { useState } from 'react'
+import { ShowCard,ModelForm } from "../components/index.js";
 
 function Home() {
+
+  const [showModel,useShowModel] = useState(false);
+
   return (
     <>
-        <ShowCard/>
+      <ShowCard onShow={() => useShowModel(true)} isVisible={showModel} />
+        {showModel && <ModelForm onClose={()=> useShowModel(false)} isVisible={showModel}/>}
     </>
   )
 }

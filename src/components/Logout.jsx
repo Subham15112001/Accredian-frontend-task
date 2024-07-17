@@ -16,7 +16,7 @@ function Logout() {
     ).then((value) => {
         dispatch(logout())
         navigate("/login")
-        console.log(value)
+       
     })
     
   }

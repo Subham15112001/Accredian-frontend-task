@@ -2,36 +2,41 @@ import { axiosPrivate } from "../api/axios";
 import { useEffect } from "react";
 import useRefreshToken from "./useRefreshToken";
 import { useDispatch,useSelector } from "react-redux";
-
+import { useNavigate } from "react-router";
+import { logout } from "../features/user/userSlice";
 
 const useAxiosPrivate = () => {
     const refresh = useRefreshToken();
     const  auth  = useSelector((state) =>{
-       // console.log(state.user)
         return  state.user.userData
     });
-    useEffect(() => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
+    useEffect(() => {
         const requestIntercept = axiosPrivate.interceptors.request.use(
             config => {
                 if (!config.headers['Authorization']) {
                     config.headers['Authorization'] = `Bearer ${auth?.accessToken}`;
                 }
                 return config;
-            }, async (error) => await Promise.reject(error)
+            }, async (error) =>  Promise.reject(error)
         );
 
         const responseIntercept = axiosPrivate.interceptors.response.use(
             response => response,
             async (error) => {
                 const prevRequest = error?.config;
+               
                 if (error?.response?.status === 403 && !prevRequest?.sent) {
                     prevRequest.sent = true;
                     const newAccessToken = await refresh();
                     prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
                     return axiosPrivate(prevRequest);
                 }
-                return await Promise.reject(error);
+
+                
+                return  Promise.reject(error);
             }
         );
 
