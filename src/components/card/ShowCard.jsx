@@ -29,7 +29,7 @@ function ShowCard({isVisible,onShow}) {
                                         </div>
                                     </div>
 
-                                    <a href="#" onClick={() => onShow()} className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700">Svelte Signals</a>
+                                    <a href="#" onClick={() => onShow()} className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700">Use Code</a>
                                 </div>
                             </div>
                         </div>
