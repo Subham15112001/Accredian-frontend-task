@@ -8,7 +8,7 @@ export const api =  axios.create({
 });
 
 export const axiosPrivate = axios.create({
-    baseURL: BASE_URL,
+    baseURL: "https://accredian-backend-task-production-4ace.up.railway.app",
     headers: { 'Content-Type': 'application/json' },
     withCredentials: true
 });
