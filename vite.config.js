@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy:{
-      "/api":"http//localhost:8000"
+      "/api":"https://accredian-backend-task-production-4ace.up.railway.app/"
     }
   },
   plugins: [react()],
