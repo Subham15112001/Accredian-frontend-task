@@ -3,6 +3,7 @@ import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
 const initialState = {
     status:false,
     userData:null,
+    rank : "STUDENT"
 }
 
 const userSlice = createSlice({
@@ -19,6 +20,9 @@ const userSlice = createSlice({
         },
         upDate:(state,action) => {
             state.userData = action.payload
+        },
+        updateRank:(state,action)=> {
+            state.rank = action.payload
         }
     }
 })
