@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
-import { ShowCard,ModelForm } from "../components/index.js";
+import { Table } from "../components/index";
 
 function Home() {
 
-  const [showModel,useShowModel] = useState(false);
-
   return (
     <>
-      <ShowCard onShow={() => useShowModel(true)} isVisible={showModel} />
-        {showModel && <ModelForm onClose={()=> useShowModel(false)} isVisible={showModel}/>}
+      <div className='flex  h-lvh w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 '>
+        <div className='flex-1 justify-center self-center'>
+          {"home"}
+        </div>
+      </div>
+
     </>
   )
 }

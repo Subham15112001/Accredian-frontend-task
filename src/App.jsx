@@ -50,7 +50,8 @@ function App() {
   return (
     <>
       <div className='h-screen flex flex-wrap content-between bg-white'>
-      <div className='w-full block h-full'>
+      <div className='w-screen block h-full'>
+      
         <Navbar />
         <main>
         <Outlet />
