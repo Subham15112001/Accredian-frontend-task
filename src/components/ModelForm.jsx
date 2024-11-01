@@ -13,7 +13,7 @@ function ModelForm({ isVisible, onClose }) {
         }
     })
 
-    const authStatus = useSelector((state) => state.user.status)
+    const authStatus = useSelector((state) => state.user?.status)
     const [errorMessage, setErroMessage] = useState("");
 
     const handleCode = async (data) => {
@@ -21,6 +21,10 @@ function ModelForm({ isVisible, onClose }) {
         if (errorMessage === "successfully done"){
             return ;
         }
+
+        if(authStatus == false){
+            setErroMessage("please login");
+        } 
         
         let apiResponse = await axiosPrivate.post("coupons/use-coupon",{couponCode})
                                 .then(()=>{
@@ -30,14 +34,17 @@ function ModelForm({ isVisible, onClose }) {
                                     setErroMessage("successfully done")
                                 })
                                 .catch((error) => {
-                                    if (error.response.status === 401) {
+                                    if (error.response?.status === 401) {
                                         setErroMessage("coupon is not valid")
-                                    } else if (error.response.status === 402) {
+                                    } else if (error.response?.status === 402) {
                                         setErroMessage("coupon is not active")
-                                    } else if (error.response.status === 404) {
+                                    } else if (error.response?.status === 404) {
                                         setErroMessage("coupon is already used by you")
                                     }
+
+                                   
                                 })
+                               
     }
     return (
         <>
